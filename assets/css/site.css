@@ -40,7 +40,10 @@ button { font: inherit; }
 .profile h1 { margin: 0; color: var(--heading); font-family: var(--serif); font-size: 29px; font-weight: 400; line-height: 1.08; letter-spacing: -.02em; }
 .profile-role { margin: 17px 0 7px; color: var(--muted); font-size: 14px; line-height: 1.48; }
 .profile-institution { display: block; width: fit-content; font-size: 14px; font-weight: 650; text-decoration: none; }
-.profile-email { display: block; width: fit-content; margin-top: 7px; color: var(--muted); font-size: 11px; text-decoration: none; }
+.profile-affiliations { display: block; margin-top: 10px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.profile-affiliations a { color: inherit; text-decoration-color: var(--line); }
+.profile-affiliations a:hover { color: var(--accent); text-decoration-color: currentColor; }
+.profile-email { display: block; width: fit-content; margin-top: 10px; color: var(--muted); font-size: 11px; text-decoration: none; }
 .profile-links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 22px; padding-top: 17px; border-top: 1px solid var(--line); }
 .profile-links a { color: var(--ink); font-size: 12px; text-decoration: none; }
 .profile-links a:hover { color: var(--accent); text-decoration: underline; }
@@ -98,16 +101,16 @@ button { font: inherit; }
 .partners strong { color: var(--heading); }
 
 .project-list { border-top: 1px solid var(--line); }
-.project-item { display: grid; grid-template-columns: minmax(240px, 38%) 1fr; gap: 46px; align-items: center; padding: 46px 0; border-bottom: 1px solid var(--line); }
-.project-item:nth-child(even) .project-visual { order: 2; }
-.project-visual { margin: 0; }
+.project-item { display: grid; grid-template-columns: minmax(240px, 38%) 1fr; column-gap: 46px; row-gap: 22px; align-items: center; padding: 46px 0; border-bottom: 1px solid var(--line); }
+.project-item h3 { grid-column: 1 / -1; grid-row: 1; }
+.project-visual { grid-column: 1; grid-row: 2; margin: 0; overflow: hidden; }
+.project-copy { grid-column: 2; grid-row: 2; }
+.project-item:nth-child(even) .project-visual { grid-column: 2; }
+.project-item:nth-child(even) .project-copy { grid-column: 1; }
 .project-image-placeholder { display: grid; place-items: center; width: 100%; aspect-ratio: 16 / 9; border: 1px solid var(--line); background: var(--soft); color: var(--accent-light); font-size: 11px; letter-spacing: .04em; }
-.project-image { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--soft); }
-.project-image.contain { object-fit: contain; padding: 18px; }
+.project-image { display: block; width: 100%; height: auto; }
 .project-item figcaption, .engagement-feature figcaption { margin-top: 9px; color: var(--muted); font-size: 10px; line-height: 1.45; }
-.project-image.dark-image { background: #050505; }
-.project-image.sermas-figure { object-position: center 40%; }
-.project-item h3 { margin: 0 0 16px; color: var(--heading); font-family: var(--serif); font-size: 28px; font-weight: 400; line-height: 1.2; }
+.project-item h3 { margin: 0; color: var(--heading); font-family: var(--serif); font-size: 28px; font-weight: 400; line-height: 1.2; }
 .project-item p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
 .project-item .item-links { display: flex; flex-wrap: wrap; gap: 11px 22px; margin-top: 21px; padding-top: 17px; border-top: 1px solid var(--line); }
 .item-links a { font-size: 12px; font-weight: 650; line-height: 1.5; text-decoration: none; }
@@ -191,7 +194,12 @@ button { font: inherit; }
   .home-index a { grid-template-columns: 28px 1fr auto; gap: 12px; }
   .home-index p { grid-column: 2 / -1; }
   .project-item { grid-template-columns: 1fr; gap: 22px; }
-  .project-item:nth-child(even) .project-visual { order: 0; }
+  .project-item h3, .project-visual, .project-copy,
+  .project-item:nth-child(even) .project-visual,
+  .project-item:nth-child(even) .project-copy { grid-column: 1; }
+  .project-item h3 { grid-row: 1; }
+  .project-visual, .project-item:nth-child(even) .project-visual { grid-row: 2; }
+  .project-copy, .project-item:nth-child(even) .project-copy { grid-row: 3; }
   .engagement-feature { grid-template-columns: 1fr; gap: 22px; }
   .engagement-feature.reverse figure { order: 0; }
 }
